@@ -1,0 +1,25 @@
+﻿@{
+}
+@model BooksViewModel
+
+<h1>@ViewBag.Calc</h1>
+<h1>Welcome to Amazon2.0</h1>
+
+@foreach (Book b in Model.Books)
+{
+    <h3>@b.Title</h3>
+
+    <ul>
+        <li>@b.Author</li>
+        <li>@b.Publisher</li>
+        <li>@b.Isbn</li>
+        <li>@b.Classification</li>
+        <li>@b.Category</li>
+        <li>@b.PageCount</li>
+        <li>@b.Price</li>
+    </ul>
+    <br />
+}
+
+<div page-blah="@Model.PageInfo" page-action="Index"></div>
+
