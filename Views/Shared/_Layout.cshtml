@@ -4,10 +4,24 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-    <div>
-        @RenderBody()
+
+    <div class="bg-dark text-white p-2">
+        <span class="navbar-toggler m-lg-2">BOOK PROJECT</span>
+    </div>
+
+    <div class="row m-1 p-1">
+        <div id="types" class="col-3">
+            Something useful 
+        </div>
+
+        <div class="col-9">
+            <div>
+                @RenderBody()
+            </div>
+        </div>
     </div>
 
     <footer>Goodbye</footer>
