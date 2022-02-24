@@ -18,10 +18,13 @@ namespace BookProject.Components
 
         public IViewComponentResult Invoke()
         {
+            //ViewBag.SelectedType = RouteData.Values['category'];
+
             var types = repo.Books
                 .Select(x => x.Category)
                 .Distinct()
                 .OrderBy(x => x);
+
             return View(types);
         }
     }
