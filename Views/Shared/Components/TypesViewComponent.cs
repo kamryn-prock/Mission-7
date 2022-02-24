@@ -11,18 +11,18 @@ namespace BookProject.Components
     {
         private IBookProjectRepository repo { get; set; }
       
-        public TypesViewComponent(IBookProjectRepository)
+        public TypesViewComponent(IBookProjectRepository temp)
         {
             repo = temp;
         }
 
         public IViewComponentResult Invoke()
         {
-            var typers = repo.Books
+            var types = repo.Books
                 .Select(x => x.Category)
                 .Distinct()
                 .OrderBy(x => x);
-            return View();
+            return View(types);
         }
     }
 }

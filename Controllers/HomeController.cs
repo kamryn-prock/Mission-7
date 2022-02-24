@@ -17,14 +17,14 @@ namespace BookProject.Controllers
         {
             repo = temp;
         }
-        public IActionResult Index(string projectType, int pageNum = 1) //do not use "page" as your variable name. = 1 is default
+        public IActionResult Index(string category, int pageNum = 1) //do not use "page" as your variable name. = 1 is default
         {
             int pageSize = 5;
 
             var x = new BooksViewModel
             {
                 Books = repo.Books
-                .Where(b => b.Category == Category)
+                .Where(b => b.Category == category || category == null)
                 .OrderBy(b => b.Title)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),

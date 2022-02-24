@@ -54,6 +54,10 @@ namespace BookProject
 
             app.UseEndpoints(endpoints =>
             {
+            endpoints.MapControllerRoute("typepafe",
+                "{category}/Page{pageNum}",
+                new { Controller = "Home", action = "Index" });
+
                 endpoints.MapControllerRoute(
                     name: "Paging",
                     pattern: "Page:{pageNum}",
