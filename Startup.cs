@@ -54,7 +54,12 @@ namespace BookProject
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapDefaultControllerRoute();
+                endpoints.MapControllerRoute(
+                    name: "Paging",
+                    pattern: "Page:{pageNum}",
+                    defaults: new { Controller = "Home", action = "Index" });
+
+                endpoints.MapDefaultControllerRoute(); // this needs to go second
             });
         }
     }
