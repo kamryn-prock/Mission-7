@@ -37,6 +37,13 @@ namespace BookProject
            });
 
             services.AddScoped<IBookProjectRepository, EFBookProjectRepository>();
+
+            services.AddRazorPages();
+
+            services.AddDistributedMemoryCache();
+
+            services.AddSession();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +56,8 @@ namespace BookProject
 
             //Corresponds to the wwwroot
             app.UseStaticFiles();
+
+            app.UseSession(); //can store an int, string, or bite. We need to make it store our basket.
 
             app.UseRouting();
 
@@ -69,7 +78,10 @@ namespace BookProject
                 
                 // order matters
 
-                endpoints.MapDefaultControllerRoute(); // this needs to go last
+                endpoints.MapDefaultControllerRoute();
+
+                endpoints.MapRazorPages();
+            
             });
         }
     }
