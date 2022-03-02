@@ -41,8 +41,10 @@ namespace BookProject
             services.AddRazorPages();
 
             services.AddDistributedMemoryCache();
-
             services.AddSession();
+
+            services.AddScoped<Basket>(x => SessionBasket.GetBasket(x));
+            services.AddSingleton<HttpContextAccessor, HttpContextAccessor>();
 
         }
 
