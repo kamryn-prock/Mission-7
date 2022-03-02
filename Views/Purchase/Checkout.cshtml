@@ -4,9 +4,12 @@
 @model Purchase
 
 <h2>Check out now</h2>
-<p>Please enter your details, and we will get your dontation to those who need it!</p>
+<p>Please enter your details for shipping below!</p>
 
-<form method="post">
+<form method="post" asp-action="Checkout">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
     <h4>Ship to:</h4>
 
     <div class="form-group">
@@ -49,6 +52,10 @@
     <div class="form-group">
         <label asp-for="Country">Country:</label>
         <input asp-for="Country" class="form-control" />
+    </div>
+
+    <div class="float-end">
+        <input class="btn btn-primary" type="submit" value="Send Order" />
     </div>
 
 </form>
