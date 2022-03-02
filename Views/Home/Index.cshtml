@@ -3,23 +3,14 @@
 @model BooksViewModel
 
 <h1>@ViewBag.Calc</h1>
-<h1>Welcome to Amazon2.0</h1>
+
 
 @foreach (Book b in Model.Books)
 {
-    <h3>@b.Title</h3>
-
-    <ul>
-        <li>@b.Author</li>
-        <li>@b.Publisher</li>
-        <li>@b.Isbn</li>
-        <li>@b.Classification</li>
-        <li>@b.Category</li>
-        <li>@b.PageCount</li>
-        <li>@b.Price</li>
-    </ul>
-    <br />
+    <partial name="ProjectSummary" model="b" /> // go look for Project Summary. Send "b"
 }
 
-<div page-blah="@Model.PageInfo" page-action="Index"></div>
+<div page-blah="@Model.PageInfo" page-action="Index" page-class="btn"
+     page-class-normal="btn-outline-dark" page-class-selected="btn-primary" page-classes-enabled="true"
+     class="btn-group pull-right m-1"></div>
 
