@@ -44,7 +44,7 @@ namespace BookProject
             services.AddSession();
 
             services.AddScoped<Basket>(x => SessionBasket.GetBasket(x));
-            services.AddSingleton<HttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
         }
 
