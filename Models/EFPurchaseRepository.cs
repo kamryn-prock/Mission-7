@@ -19,7 +19,7 @@ namespace BookProject.Models
         {
             context.AttachRange(purchase.Lines.Select(x => x.Book));
 
-            if (purchase.PurchaseId == 0)
+            if (purchase.DonationId == 0)
             {
                 context.Purchases.Add(purchase);
             }

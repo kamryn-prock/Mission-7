@@ -11,7 +11,7 @@ namespace BookProject.Models
     {
         [Key]
         [BindNever]
-        public int PurchaseId { get; set; }
+        public int DonationId { get; set; }
 
         [BindNever]
         public ICollection<BasketLineItem> Lines { get; set; }
