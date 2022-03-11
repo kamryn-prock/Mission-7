@@ -1,0 +1,24 @@
+﻿@page "/admin"
+
+@model BookProject.Pages.Admin.IndexModel
+
+@{
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Book Project Admin</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />"
+    <base href="/" />
+</head>
+
+<body>
+    <component type="typeof(BookProject.Pages.Admin.Routed)" render-mode="ServerPrerendered" />
+    <script src="/_framework/blazor.server.js"></script>
+
+</body>
+
+</html>

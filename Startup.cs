@@ -47,6 +47,8 @@ namespace BookProject
             services.AddScoped<Basket>(x => SessionBasket.GetBasket(x));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+            services.AddServerSideBlazor();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -78,12 +80,17 @@ namespace BookProject
                 endpoints.MapControllerRoute("type",
                     "{category}",
                     new { Controller = "Home", Action = "Index", pageNum = 1 });
-                
+
                 // order matters
 
-                endpoints.MapDefaultControllerRoute();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
 
                 endpoints.MapRazorPages();
+
+                endpoints.MapBlazorHub();
+                endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
             
             });
         }
