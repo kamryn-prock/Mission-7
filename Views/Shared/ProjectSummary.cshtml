@@ -22,14 +22,13 @@
 
     <form method="post" asp-page="/Shop">
 
-        <input type="hidden" asp-for="@Model.BookId" /> @*passinfo*@
+        <input type="hidden" asp-for="@Model.BookId" /> @*Pass info*@
         <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()"/>
 
         <span class="card-text">
-            <button type="submit" class="btn btn-success btn-sm float-end">Add to Cart</button>
+            <button type="submit" class="btn btn-success btn-sm float-end shadow-lg">Add to Cart</button>
         </span>
 
     </form>
 
 </div>
-
