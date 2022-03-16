@@ -48,6 +48,8 @@
 
 </table>
 
+<NavLink class="btn btn-primary" href="/admin/books/create">Create</NavLink>
+
 @code {
     public IBookProjectRepository repo => Service; @*Service is a property*@
 
@@ -63,9 +65,9 @@ public async Task UpdateData()
     BookData = await repo.Books.ToListAsync();
 }
 
-public string GetDetailsUrl(long id) => $"/admin/projects/details/{id}";
+public string GetDetailsUrl(long id) => $"/admin/books/details/{id}";
 
-public string GetEditUrl(long id) => $"/admin/projects/edit/{id}";
+public string GetEditUrl(long id) => $"/admin/books/edit/{id}";
 
 public async Task RemoveBook(Book b)
 {
