@@ -32,7 +32,7 @@
                         </td>
 
                         <td>
-                            <button class="btn btn-danger btn-sm"@onclick="@(x=> DeleteBook(p))">Delete</button>
+                            <button class="btn btn-danger btn-sm"@onclick="@(x=> RemoveBook(b))">Delete</button>
                         </td>
                     </tr>
                 }
@@ -51,21 +51,27 @@
 @code {
     public IBookProjectRepository repo => Service; @*Service is a property*@
 
-    public IEnumerable<Book> BookData { get; set; }
+public IEnumerable<Book> BookData { get; set; }
 
-    protected async override Task OnInitializedAsync()
-    {
-        await UpdateData();
-    }
+protected async override Task OnInitializedAsync()
+{
+    await UpdateData();
+}
 
-    public async Task UpdateData()
-    {
-        BookData = await repo.Books.ToListAsync();
-    }
+public async Task UpdateData()
+{
+    BookData = await repo.Books.ToListAsync();
+}
 
-    public string GetDetailsUrl(long id) => $"/admin/projects/details/{id}";
+public string GetDetailsUrl(long id) => $"/admin/projects/details/{id}";
 
-    public string GetEditUrl(long id) => $"/admin/projects/edit/{id}";
+public string GetEditUrl(long id) => $"/admin/projects/edit/{id}";
+
+public async Task RemoveBook(Book b)
+{
+    repo.DeleteBook(b);
+    await UpdateData();
+}
 
 
 }
