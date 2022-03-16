@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using BookProject.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
-using static BookProject.Models.BookProjectRepository;
+using static BookProject.Models.IBookProjectRepository;
 
 namespace BookProject
 {

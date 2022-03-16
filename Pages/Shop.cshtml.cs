@@ -6,22 +6,21 @@ using BookProject.Infrastructure;
 using BookProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using static BookProject.Models.BookProjectRepository;
+using static BookProject.Models.IBookProjectRepository;
 
 namespace BookProject.Pages
 {
     public class ShopModel : PageModel
     { 
-        private IBookProjectRepository repo { get; set; }
+        private Models.IBookProjectRepository repo { get; set; }
         public Basket basket { get; set; }
         public string ReturnUrl { get; set; }
 
-        public ShopModel (IBookProjectRepository temp, Basket b)
+        public ShopModel (Models.IBookProjectRepository temp, Basket b)
         {
             repo = temp;
             basket = b;
         }
-
 
         public void OnGet(string returnUrl)
         {

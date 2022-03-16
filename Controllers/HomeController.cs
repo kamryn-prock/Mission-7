@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BookProject.Models;
-using static BookProject.Models.BookProjectRepository;
+using static BookProject.Models.IBookProjectRepository;
 using BookProject.Models.ViewModels;
 
 namespace BookProject.Controllers
@@ -12,8 +12,8 @@ namespace BookProject.Controllers
     public class HomeController : Controller
     {
 
-        private IBookProjectRepository repo;
-        public HomeController (IBookProjectRepository temp)
+        private Models.IBookProjectRepository repo;
+        public HomeController (Models.IBookProjectRepository temp)
         {
             repo = temp;
         }
