@@ -11,6 +11,7 @@ using BookProject.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using static BookProject.Models.IBookProjectRepository;
+using Microsoft.AspNetCore.Identity;
 
 namespace BookProject
 {
@@ -35,6 +36,12 @@ namespace BookProject
            {
                options.UseSqlite(Configuration["ConnectionStrings:BookDBConnection"]);
            });
+
+            services.AddDbContext<AppIdentityDBContext>(options =>
+               options.UseSqlite(Configuration["ConnectionStrings:IdentityConnection"]));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppIdentityDBContext>();
 
             services.AddScoped<IBookProjectRepository, EFBookProjectRepository>();
             services.AddScoped<IPurchaseRepository, EFPurchaseRepository>();
@@ -61,10 +68,11 @@ namespace BookProject
 
             //Corresponds to the wwwroot
             app.UseStaticFiles();
-
             app.UseSession(); //can store an int, string, or bite. We need to make it store our basket.
-
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
@@ -93,6 +101,8 @@ namespace BookProject
                 endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
             
             });
+
+            IdentitySeedData.EnsurePopulated(app);
         }
     }
 }
