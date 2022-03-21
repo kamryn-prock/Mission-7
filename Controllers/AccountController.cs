@@ -37,7 +37,8 @@ namespace BookProject.Controllers
                 {
                     await signInManager.SignOutAsync();
 
-                    if ((await signInManager.PasswordSignInAsync(user, loginModel.Password, false, false)).Succeeded)
+                    if ((await signInManager.PasswordSignInAsync(
+                        user, loginModel.Password, false, false)).Succeeded)
                     {
                         return Redirect(loginModel?.ReturnUrl ?? "/admin");
                     }
